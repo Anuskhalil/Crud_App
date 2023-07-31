@@ -4,11 +4,11 @@ const morgan = require("morgan");
 const bodyparser = require("body-parser");
 const path = require("path");
 
-const connectDB = require('./server/database/connection');
+const connectDB = require("./server/database/connection");
 
 const app = express();
 
-dotenv.config({ path: "config.env" });
+dotenv.config();
 
 //log request
 app.use(morgan("tiny"));
@@ -30,7 +30,7 @@ app.use("/img", express.static(path.resolve(__dirname, "assets/img")));
 app.use("/js", express.static(path.resolve(__dirname, "assets/js")));
 
 //load router
-app.use('/', require('./server/routes/router'))
+app.use("/", require("./server/routes/router"));
 
 const port = process.env.PORT || 3000; //Development mein 3000 available hota hein => Environment var ka number
 app.listen(port, () => {
