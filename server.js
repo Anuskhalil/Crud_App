@@ -8,13 +8,12 @@ const connectDB = require("./server/database/connection");
 
 const app = express();
 
-dotenv.config();
+dotenv.config({path : ".env"});
 
 //log request
 app.use(morgan("tiny"));
 
 //mongodb connection
-console.log(process.env.MONGO_URI);
 connectDB(process.env.MONGO_URI);
 
 //parse request to body-parser
