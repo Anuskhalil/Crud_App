@@ -14,6 +14,7 @@ dotenv.config({ path: "config.env" });
 app.use(morgan("tiny"));
 
 //mongodb connection
+console.log(process.env.MONGO_URI);
 connectDB(process.env.MONGO_URI);
 
 //parse request to body-parser
