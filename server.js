@@ -14,7 +14,7 @@ dotenv.config({ path: "config.env" });
 app.use(morgan("tiny"));
 
 //mongodb connection
-connectDB();
+connectDB(process.env.MONGO_URI);
 
 //parse request to body-parser
 app.use(bodyparser.urlencoded({ extended: true }));
@@ -31,7 +31,7 @@ app.use("/js", express.static(path.resolve(__dirname, "assets/js")));
 //load router
 app.use('/', require('./server/routes/router'))
 
-const port = process.env.PORT || 8080; //Development mein 3000 available hota hein => Environment var ka number
+const port = process.env.PORT || 3000; //Development mein 3000 available hota hein => Environment var ka number
 app.listen(port, () => {
   // Port => In and out way
   console.log(`Example app listening on port ${port}`);
