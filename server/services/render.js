@@ -18,7 +18,7 @@ exports.add_user = (req, res) => {
 }
 
 exports.update_user = (req, res) => {
-    axios.put('https://helpful-puce-windbreaker.cyclic.cloud/api/users', {params : {id:req.query.id}})
+    axios.get('https://helpful-puce-windbreaker.cyclic.cloud/api/users', {params : {id:req.query.id}})
     .then(function(userdata){
         res.render("update_user", {user : userdata.data})
     })
